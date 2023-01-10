@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AddAppointment from "./pages/AddAppointment";
 import { AppointmentInfo } from "./pages/AppointmentInfo";
 import Search from "./pages/Search";
-import "./app.css"
+import "./App.css"
 import { useState, useEffect, useCallback } from "react";
 import {
   DeleteAptmnt,
