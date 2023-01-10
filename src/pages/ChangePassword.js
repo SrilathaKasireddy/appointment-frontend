@@ -44,7 +44,10 @@ export function ChangePassword() {
   }
   useEffect(() => getApproval(authDetail), []);
 
-  return (message ? ((message === "Approved") ? <SetNewPassword id={id} /> : <div style={{ textAlign: "center", fontSize: "50px" }}>{`${message}`}</div>) : <div><h1 style={{ textAlign: "center", fontSize: "50px" }}>Loading....</h1></div>);
+  return (message ? ((message === "Approved") ? 
+  <SetNewPassword id={id} /> : <div style={{ textAlign: "center", fontSize: "50px" }}>
+    {`${message}`}</div>) : <div><h1 style={{ textAlign: "center", fontSize: "50px" }}>
+      Loading....</h1></div>);
 }
 
 function SetNewPassword({ id }) {
@@ -65,7 +68,7 @@ function SetNewPassword({ id }) {
       },
     }).then((data) => data.json())
       .then((data1) => {
-        if (data1.message === "Password updated successfully") {
+        if (data1.message === "Password updated warningfully") {
           navigate("/PasswordUpdated")
         } else {
           setErrorMsg(data1.message);
@@ -80,7 +83,8 @@ function SetNewPassword({ id }) {
   }
   const userValidationSchema = Yup.object({
     Password: Yup.string().min(8).required(),
-    Password2: Yup.string().min(8).required().oneOf([Yup.ref('Password'), null], 'Passwords must match')
+    Password2: Yup.string().min(8).required().oneOf([Yup.ref('Password'), null], 
+    'Passwords must match')
   })
 
   const { handleBlur, handleChange, handleSubmit, values, errors, touched } = useFormik({
@@ -93,8 +97,9 @@ function SetNewPassword({ id }) {
   });
 
   return (<div className="usercontainer">
-    <Grid container direction="row" alignItems="center" justify="center" style={{ minHeight: "100vh", backgroundColor: "#F7F9F8" }} >
-      <form onSubmit={handleSubmit} style={{ padding: "3%", margin: 50, backgroundColor: "#DEF7EA" }}  >
+    <Grid container direction="row" alignItems="center" justify="center" 
+    style={{ minHeight: "100vh"}} >
+      <form onSubmit={handleSubmit} style={{ padding: "3%", margin: 50, border:"1px solid orange"}}  >
         <Typography variant="h4" pb={2}
           sx={{
             textAlign: 'center',
@@ -137,19 +142,19 @@ function SetNewPassword({ id }) {
         <br />
         <br />
         <button type="submit"
-          className="btn btn-success" style={{ height: 40, width: 70, fontSize: 15 }}>Submit</button>
+          className="btn btn-warning" style={{ height: 40, width: 70, fontSize: 15 }}>Submit</button>
         <div className="text-center" style={{ color: "red" }}>
           {errorMsg}
         </div>
         <div className="text-center" >
           <Link to="/Register" ><button type="submit"
-            className="btn btn-success" style={{ height: 40, width: 70, fontSize: 15 }}>Signup</button></Link>
+            className="btn btn-warning" style={{ height: 40, width: 70, fontSize: 15 }}>Signup</button></Link>
 
           <br />
           <br />
 
           <Link to="/Login"><button type="submit"
-            className="btn btn-success" style={{ height: 40, width: 70, fontSize: 15 }}>Login</button></Link>
+            className="btn btn-warning" style={{ height: 40, width: 70, fontSize: 15 }}>Login</button></Link>
         </div>
 
       </form>
