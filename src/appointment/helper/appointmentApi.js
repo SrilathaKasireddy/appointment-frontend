@@ -1,14 +1,15 @@
 import { API } from "../../backend";
 
 export const GetAppointments = async () => {
-  //   cPrint(JSON.stringify(user));
-  //   console.log(`${API}/apt`);
+  
   try {
+    
     const response = await fetch(`${API}/apt`, {
       method: "GET",
       headers: {
         Accept: "application/json",
         "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
       },
     });
     // console.log(response.json());
@@ -25,6 +26,7 @@ export const SaveAppointment = async (apt) => {
       headers: {
         Accept: "application/json",
         "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
       },
       body: JSON.stringify(apt),
     });
@@ -41,6 +43,7 @@ export const DeleteAptmnt = async (id) => {
       headers: {
         Accept: "application/json",
         "Content-type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
       },
     });
     return await response.json();
